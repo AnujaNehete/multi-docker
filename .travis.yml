@@ -15,9 +15,13 @@ after_success:
     - docker build -t anujap/multi-worker ./worker
 
 # Log in to docker CLI
-    - echo "$DOCKER-PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-    
-    
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+       
 # Take prod images and push to docker hub
+    - docker push anujap/multi-client
+    - docker push anujap/multi-nginx
+    - docker push anujap/multi-server
+    - docker push anujap/multi-worker
+    
 
 
